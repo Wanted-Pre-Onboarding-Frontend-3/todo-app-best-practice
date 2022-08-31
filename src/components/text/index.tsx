@@ -21,7 +21,7 @@ interface Props extends TextProps {
   element?: TextElementType
 }
 
-// util component
+// base component
 export const Text: React.FC<Props> = (props) => {
   const { className, children, element, ...rest } = props
 
