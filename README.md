@@ -51,15 +51,15 @@
 <br><br>
 
 ## 3. 역할
-|이름|역할|
-|---|---|
-|김리후| 절대경로 설정 https://github.com/Wanted-Pre-Onboarding-Frontend-3/todo-app-best-practice/pull/18, <br> 전체적인 코드 정리 https://github.com/Wanted-Pre-Onboarding-Frontend-3/todo-app-best-practice/pull/27 |
-|김지현| 팀원 / styles 폴더 구조개선 |
-|서수민| 역할 적어주세요 |
-|이경준| 역할 적어주세요 |
-|이혜성| 팀장 / axios Autorization 헤더 리팩토링 https://github.com/Wanted-Pre-Onboarding-Frontend-3/todo-app-best-practice/pull/16 |
-|문선화| 팀원 / redirect 리팩토링 |
-|홍성준| 역할 적어주세요 |
+| 이름   | 역할                                                                                                                                                                                                         |
+| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 김리후 | 절대경로 설정 https://github.com/Wanted-Pre-Onboarding-Frontend-3/todo-app-best-practice/pull/18, <br> 전체적인 코드 정리 https://github.com/Wanted-Pre-Onboarding-Frontend-3/todo-app-best-practice/pull/27 |
+| 김지현 | 팀원 / styles 폴더 구조개선                                                                                                                                                                                  |
+| 서수민 | 역할 적어주세요                                                                                                                                                                                              |
+| 이경준 | 프로젝트 Deploy, 서버측 base url 환경변수로 변경                                                                                                                                                             |
+| 이혜성 | 팀장 / axios Autorization 헤더 리팩토링 https://github.com/Wanted-Pre-Onboarding-Frontend-3/todo-app-best-practice/pull/16                                                                                   |
+| 문선화 | 팀원 / redirect 리팩토링                                                                                                                                                                                     |
+| 홍성준 | 역할 적어주세요                                                                                                                                                                                              |
 
 
 <br><br>
@@ -125,14 +125,14 @@
 
 <br>
 
-|구분|설명|
-|---|---|
-|/api| api 호출 함수를 모아둔 폴더 |
-|/page| 페이지 단위의 컴포넌트 관리 |
-|/components| 여러 페이지에서 동시에 사용되는 컴포넌트  관리 |
-|/router| 라우팅 처리를 담당 |
-|/utils| 전역 상태, 전역 함수를 관리 |
-|/styles| 전역 스타일을 관리  |
+| 구분        | 설명                                           |
+| ----------- | ---------------------------------------------- |
+| /api        | api 호출 함수를 모아둔 폴더                    |
+| /page       | 페이지 단위의 컴포넌트 관리                    |
+| /components | 여러 페이지에서 동시에 사용되는 컴포넌트  관리 |
+| /router     | 라우팅 처리를 담당                             |
+| /utils      | 전역 상태, 전역 함수를 관리                    |
+| /styles     | 전역 스타일을 관리                             |
 
 <br>
 
@@ -167,7 +167,8 @@ components 폴더의 경우 하위에 UI/Layout 폴더를 추가해 정리하자
 
 #### 4. API Base URL 환경변수화
 
-- @@@@@@ 설명추가 @@@@@@ (경준님)
+- CRA(Create React APP)에서는 기본적으로 사용자가 [환경변수](https://create-react-app.dev/docs/adding-custom-environment-variables/)를 추가할 수 있습니다.
+- 환경변수는 빌드타임에 포함되어 번들링됩니다. (일반 상수처럼 클라이언트 측에서 노출된다는 점은 같습니다.)
 
 
 <br>
