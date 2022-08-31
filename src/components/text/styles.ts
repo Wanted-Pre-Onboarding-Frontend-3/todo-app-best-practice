@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
 import type { TextProps } from './'
-import { fontSizeCSS, fontWeightCSS, getLineClampCSS, textDecorationCSS } from '../../core/typography'
-import { colors } from '../../core/colors'
+import { fontSizeCSS, fontWeightCSS, getLineClampCSS, textDecorationCSS } from '../../styles/typography'
+import { colors } from '../../styles/colors'
 import { ToStyledProps } from '../../utils/styled.util'
 
-type StyledProps = ToStyledProps<TextProps>;
+type StyledProps = ToStyledProps<TextProps>
 
 export const RootWrap = styled.p<StyledProps>`
   ${(props) => fontSizeCSS[props.$fontSize || 'M2']};
