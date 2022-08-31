@@ -1,9 +1,12 @@
 import styled from 'styled-components'
 
 import type { TextProps } from './'
-import { fontSizeCSS, fontWeightCSS, getLineClampCSS, textDecorationCSS } from '@/styles/typography'
-import { colors } from '@/styles/colors'
-import { ToStyledProps } from '@/utils/styled.util'
+import { ToStyledProps } from "@/utils/styled.util";
+import { fontSizeCSS, fontWeightCSS, getLineClampCSS, textDecorationCSS } from "@/styles/typography";
+import { colors } from "@/styles/colors";
+
+
+
 
 type StyledProps = ToStyledProps<TextProps>
 
