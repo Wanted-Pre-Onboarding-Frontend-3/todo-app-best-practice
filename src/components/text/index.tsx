@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { RootWrap } from './styles'
-import { FontSizeKey, FontWeightKey, TextDecorationKey } from '../../styles/typography'
-import { toStyledProps } from '../../utils/styled.util'
+import { FontSizeKey, FontWeightKey, TextDecorationKey } from '@/styles/typography'
+import { toStyledProps } from '@/utils/styled.util'
 
 type TextElementType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'pre' | 'span' | 'div'
 

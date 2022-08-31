@@ -1,19 +1,11 @@
-import React, { useEffect } from 'react'
-import { colors } from '../styles/colors'
-import { Text } from '../components/text'
+import React from 'react'
+import { colors } from '@/styles/colors'
+import { Text } from '@/components/text'
 import styled from 'styled-components'
-import { LinkButton } from '../components/LinkButton'
-import { Link, useNavigate } from 'react-router-dom'
-import { getToken } from '../utils/storage'
+import { LinkButton } from '@/components/LinkButton'
+import { Link } from 'react-router-dom'
 
 export const Main = () => {
-  const navigate = useNavigate()
-  const token = getToken()
-  useEffect(() => {
-    if (!token) return
-    navigate('/todos')
-  }, [token])
-
   return (
     <FlexColumnDivWrap>
       <FlexColumnDivWrap>
