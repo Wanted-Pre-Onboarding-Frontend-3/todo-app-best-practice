@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import styled from 'styled-components'
-import { colors } from '../core/colors'
-import { fontSize, fontWeight } from '../core/typography'
+import { colors } from '../styles/colors'
+import { fontSize, fontWeight } from '../styles/typography'
 import { Api } from '../api/api'
 import { setToken } from '../utils/storage'
 import axios, { AxiosError } from 'axios'
@@ -10,44 +10,47 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export interface SignIn {
-  email: string;
+  email: string
   password: string
 }
 
 export interface AxiosResponseData {
   data: {
-    error: string;
-    message: string;
-    statusCode: number;
+    error: string
+    message: string
+    statusCode: number
   }
 }
 
 export const SignIn = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm<SignIn>()
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<SignIn>()
 
   const navigate = useNavigate()
 
   const onSubmit: SubmitHandler<SignIn> = async (data) => {
-    const { email, password } = data;
-
+    const { email, password } = data
 
     try {
-      const { data: resData } = await Api.authSignIn.request(email, password);
-      setToken({ email, token: resData?.access_token });
-      navigate('/todos');
+      const { data: resData } = await Api.authSignIn.request(email, password)
+      setToken({ email, token: resData?.access_token })
+      navigate('/todos')
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        const axiosError = error as AxiosError;
-        const { response } = axiosError;
+        const axiosError = error as AxiosError
+        const { response } = axiosError
 
         if (response?.status === 404) {
-          const { data } = response as AxiosResponseData;
-          alert(data?.message);
+          const { data } = response as AxiosResponseData
+          alert(data?.message)
         }
       }
     }
   }
-
 
   const isAbleButton = watch('email')?.length > 0 && watch('password')?.length > 0
 
@@ -56,10 +59,13 @@ export const SignIn = () => {
       <FormWrap onSubmit={handleSubmit(onSubmit)}>
         <Container>
           <InputTitle>Email</InputTitle>
-          <InputWrap  {...register('email', {
-            required: true,
-            pattern: /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/,
-          })} placeholder='Email' />
+          <InputWrap
+            {...register('email', {
+              required: true,
+              pattern: /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/,
+            })}
+            placeholder="Email"
+          />
           {errors?.email?.type === 'pattern' && (
             <ErrorInputMessage>{errors.email && '이메일 포멧이 맞지 않습니다.'}</ErrorInputMessage>
           )}
@@ -67,15 +73,14 @@ export const SignIn = () => {
 
         <Container>
           <InputTitle>Password</InputTitle>
-          <InputWrap {...register('password', { required: true, minLength: 8 })} placeholder='Password' />
+          <InputWrap {...register('password', { required: true, minLength: 8 })} placeholder="Password" />
           {errors?.password?.type === 'minLength' && (
             <ErrorInputMessage>{errors.password && '비밀번호는 8자리 이상으로 설정해주세요.'}</ErrorInputMessage>
           )}
         </Container>
 
-
         <SubmitButton $isActive={!isAbleButton}>
-          <Text color={colors.white} fontSize='M2' fontWeight='regular'>
+          <Text color={colors.white} fontSize="M2" fontWeight="regular">
             로그인하기
           </Text>
         </SubmitButton>

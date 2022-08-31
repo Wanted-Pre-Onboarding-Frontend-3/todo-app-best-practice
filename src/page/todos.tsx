@@ -6,7 +6,7 @@ import axios, { AxiosError } from 'axios'
 import { TodoList } from '../components/TodoList'
 import styled from 'styled-components'
 import { Text } from '../components/text'
-import { colors } from '../core/colors'
+import { colors } from '../styles/colors'
 import { useForm } from 'react-hook-form'
 
 export interface todos {
