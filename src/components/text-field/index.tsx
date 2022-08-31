@@ -1,9 +1,8 @@
 import React, { useRef } from 'react';
-
-import { toStyledProps } from '../../utils/styled.util';
-import { Text } from '../text';
 import { DivWrap, HelpTextDivWRap, TextFieldDivWrap, TextFieldWrap } from './styles';
-import { colors } from "../../styles/colors";
+import { Text } from '@/components/text';
+import { colors } from '@/styles/colors';
+import { toStyledProps } from '@/utils/styled.util';
 
 export type TextFieldProps = {
   disabled?: boolean;
@@ -18,15 +17,7 @@ interface Props extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'
 }
 
 export const TextField: React.FC<Props> = (props) => {
-  const {
-    className,
-    error,
-    disabled,
-    helpText,
-    onClickClear: _onClickClear,
-    onFocus: _onFocus,
-    ...rest
-  } = props;
+  const { className, error, disabled, helpText, onClickClear: _onClickClear, onFocus: _onFocus, ...rest } = props;
 
   const ref = useRef<HTMLInputElement>(null);
 
@@ -38,22 +29,18 @@ export const TextField: React.FC<Props> = (props) => {
   };
 
   return (
-    <DivWrap className={className} >
+    <DivWrap className={className}>
       <TextFieldDivWrap {...styledProps}>
-        <TextFieldWrap ref={ref}
-                       disabled={disabled}
-                       onFocus={onFocus} {...styledProps} {...rest} />
-      </TextFieldDivWrap >
+        <TextFieldWrap ref={ref} disabled={disabled} onFocus={onFocus} {...styledProps} {...rest} />
+      </TextFieldDivWrap>
 
       {helpText && (
-        <HelpTextDivWRap >
-          <Text fontSize="S2"
-                fontWeight="medium"
-                color={error ? colors.error500 : colors.grey600} >
+        <HelpTextDivWRap>
+          <Text fontSize="S2" fontWeight="medium" color={error ? colors.error500 : colors.grey600}>
             {helpText}
-          </Text >
-        </HelpTextDivWRap >
+          </Text>
+        </HelpTextDivWRap>
       )}
-    </DivWrap >
+    </DivWrap>
   );
 };

@@ -1,14 +1,10 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+import type { TextProps } from './';
+import { colors } from '@/styles/colors';
+import { fontSizeCSS, fontWeightCSS, getLineClampCSS, textDecorationCSS } from '@/styles/typography';
+import { ToStyledProps } from '@/utils/styled.util';
 
-import type { TextProps } from './'
-import { ToStyledProps } from "@/utils/styled.util";
-import { fontSizeCSS, fontWeightCSS, getLineClampCSS, textDecorationCSS } from "@/styles/typography";
-import { colors } from "@/styles/colors";
-
-
-
-
-type StyledProps = ToStyledProps<TextProps>
+type StyledProps = ToStyledProps<TextProps>;
 
 export const RootWrap = styled.p<StyledProps>`
   ${(props) => fontSizeCSS[props.$fontSize || 'M2']};
@@ -21,4 +17,4 @@ export const RootWrap = styled.p<StyledProps>`
   color: ${(props) => props.$color || colors.black};
 
   transition: color 0.1s ease;
-`
+`;

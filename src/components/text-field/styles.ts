@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { TextFieldProps } from './index';
-import { ToStyledProps } from '../../utils/styled.util';
-import { fontSizeCSS, fontWeightCSS, getLineClampCSS } from "../../styles/typography";
-import { colors } from "../../styles/colors";
+import { TextFieldProps } from '@/components/text-field/index';
+import { colors } from '@/styles/colors';
+import { fontSizeCSS, fontWeightCSS, getLineClampCSS } from '@/styles/typography';
+import { ToStyledProps } from '@/utils/styled.util';
 
 type StyledProps = ToStyledProps<Omit<TextFieldProps, 'size'>>;
 
