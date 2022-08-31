@@ -27,29 +27,25 @@ export const SignUp = () => {
     await onClickSignUpButton({ email, password });
   };
 
-  const onClickSignUpButton = (data: { email: string; password: string }) => {
-    return async (e: any) => {
-      e.preventDefault();
+  const onClickSignUpButton = async (data: { email: string; password: string }) => {
+    const { email, password } = data;
 
-      const { email, password } = data;
+    try {
+      const { data: resData } = await Api.authSignUp.request(email, password);
+      setToken({ email, token: resData?.access_token });
+      alert('아이디가 생성되었습니다.');
+      navigate('/todos');
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError;
+        const { response } = axiosError;
 
-      try {
-        const { data: resData } = await Api.authSignUp.request(email, password);
-        setToken({ email, token: resData?.access_token });
-        alert('아이디가 생성되었습니다.');
-        navigate('/todos');
-      } catch (error) {
-        if (axios.isAxiosError(error)) {
-          const axiosError = error as AxiosError;
-          const { response } = axiosError;
-
-          if (response?.status === 400) {
-            const { data } = response as AxiosResponseData;
-            alert(data?.message);
-          }
+        if (response?.status === 400) {
+          const { data } = response as AxiosResponseData;
+          alert(data?.message);
         }
       }
-    };
+    }
   };
 
   const [email, setEmail] = useState<string>('');

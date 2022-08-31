@@ -1,6 +1,6 @@
-# 원티드 프리온보딩 1차 과제 - 투두 리스트 앱 best pracgtice
+# 원티드 프리온보딩 1차 과제 - 투두 리스트 앱 best practice
 
-## 🚀🚀 [배포 보러가기](@@@@@@ 배포 URL을 넣어주세요 @@@@@@)
+## 🚀🚀 [배포 보러가기](https://best-todos-3team.web.app/)
 ## 1. 소개
 
 - 원티드 프리온보딩 프론트엔드 코스 6기 1-1 과제
@@ -54,7 +54,7 @@
 |이름|역할|
 |---|---|
 |김리후| 절대경로 설정 https://github.com/Wanted-Pre-Onboarding-Frontend-3/todo-app-best-practice/pull/18, <br> 전체적인 코드 정리 https://github.com/Wanted-Pre-Onboarding-Frontend-3/todo-app-best-practice/pull/27 |
-|김지현| 역할 적어주세요 |
+|김지현| 팀원 / styles 폴더 구조개선 |
 |서수민| 역할 적어주세요 |
 |이경준| 역할 적어주세요 |
 |이혜성| 팀장 / axios Autorization 헤더 리팩토링 https://github.com/Wanted-Pre-Onboarding-Frontend-3/todo-app-best-practice/pull/16 |
@@ -63,10 +63,8 @@
 
 
 <br><br>
-## 4. 디렉토리 구조 및 코드 구조
 
-
-### 디렉토리 구조
+## 4. 디렉토리 구조
 
 ```
 📦src
@@ -122,7 +120,6 @@
  ┗ 📜index.js
  ```
 
-<br>
 
 디렉토리 구조는 아래의 역할에 따라 구성했습니다.
 
@@ -141,21 +138,14 @@
 
 components 폴더의 경우 하위에 UI/Layout 폴더를 추가해 정리하자는 의견이 있었습니다. 논의해본 결과 팀원 모두 폴더 추가를 통해 명확한 역할 분리를 하는 것에는 동의하나, 이번 과제 규모에서는 불필요한 부분이라고 생각되어 현재와 같은 구조로 확정하였습니다.
 
-
 <br><br>
 
-### 코드 구조
-
-@@@@@@ 코드 구조는 무엇을 적을지 논의 필요 @@@@@@
-
-
-<br><br>
 
 ## 5. Best Practice 논의 내용
 
 #### 1. 폴더 구조 개선
 
-- styles 폴더 내부로 스타일과 관련한 파일을 모아, 역할에 맞는 폴더구조를 만들고자 했습니다.
+- 스타일과 관련한 파일들을 styles 폴더에 모아, 역할에 맞는 폴더구조를 만들고자 했습니다.
 
 <br>
 

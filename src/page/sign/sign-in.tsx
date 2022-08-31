@@ -1,8 +1,6 @@
 import axios, { AxiosError } from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-
 import { Container, DivWrap, FormWrap, InputTitle, SubmitButton } from './style';
 import { setToken } from "@/utils/storage";
 import { Api } from "@/api/api";
@@ -33,28 +31,24 @@ export const SignIn = () => {
     await onClickLoginButton({ email, password });
   };
 
-  const onClickLoginButton = (data: { email: string; password: string }) => {
-    return async (e: any) => {
-      e.preventDefault();
+  const onClickLoginButton = async (data: { email: string; password: string }) => {
+    const { password, email } = data;
 
-      const { email, password } = data;
+    try {
+      const { data: resData } = await Api.authSignIn.request(email, password);
+      setToken({ email, token: resData?.access_token });
+      navigate('/todos');
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError;
+        const { response } = axiosError;
 
-      try {
-        const { data: resData } = await Api.authSignIn.request(email, password);
-        setToken({ email, token: resData?.access_token });
-        navigate('/todos');
-      } catch (error) {
-        if (axios.isAxiosError(error)) {
-          const axiosError = error as AxiosError;
-          const { response } = axiosError;
-
-          if (response?.status === 404) {
-            const { data } = response as AxiosResponseData;
-            alert(data?.message);
-          }
+        if (response?.status === 404) {
+          const { data } = response as AxiosResponseData;
+          alert(data?.message);
         }
       }
-    };
+    }
   };
 
   const [email, setEmail] = useState<string>('');
@@ -150,6 +144,7 @@ export const SignIn = () => {
         <SubmitButton
           type="submit"
           $isActive={passwordError.confirm && passwordError.confirm}
+          onClick={() => onClickLoginButton({ password, email })}
         >
           <Text color={colors.white}
                 fontSize="M2"
