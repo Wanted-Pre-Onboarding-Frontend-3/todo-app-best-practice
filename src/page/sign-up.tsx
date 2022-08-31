@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import styled from 'styled-components'
-import { colors } from '../core/colors'
-import { fontSize, fontWeight } from '../core/typography'
+import { colors } from '../styles/colors'
+import { fontSize, fontWeight } from '../styles/typography'
 import { Api } from '../api/api'
 import { setToken } from '../utils/storage'
 import axios, { AxiosError } from 'axios'
@@ -10,45 +10,48 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export interface SignUp {
-  email: string;
+  email: string
   password: string
 }
 
 export interface AxiosResponseData {
   data: {
-    error: string;
-    message: string;
-    statusCode: number;
+    error: string
+    message: string
+    statusCode: number
   }
 }
 
 export const SignUp = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm<SignUp>()
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<SignUp>()
 
   const navigate = useNavigate()
 
   const onSubmit: SubmitHandler<SignUp> = async (data) => {
-    const { email, password } = data;
-
+    const { email, password } = data
 
     try {
-      const { data: resData } = await Api.authSignUp.request(email, password);
-      setToken({ email, token: resData?.access_token });
-      alert('아이디가 생성되었습니다.');
-      navigate('/todos');
+      const { data: resData } = await Api.authSignUp.request(email, password)
+      setToken({ email, token: resData?.access_token })
+      alert('아이디가 생성되었습니다.')
+      navigate('/todos')
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        const axiosError = error as AxiosError;
-        const { response } = axiosError;
+        const axiosError = error as AxiosError
+        const { response } = axiosError
 
         if (response?.status === 400) {
-          const { data } = response as AxiosResponseData;
-          alert(data?.message);
+          const { data } = response as AxiosResponseData
+          alert(data?.message)
         }
       }
     }
   }
-
 
   const isAbleButton = watch('email')?.length > 0 && watch('password')?.length > 0
 
@@ -57,10 +60,13 @@ export const SignUp = () => {
       <FormWrap onSubmit={handleSubmit(onSubmit)}>
         <Container>
           <InputTitle>Email</InputTitle>
-          <InputWrap  {...register('email', {
-            required: true,
-            pattern: /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/,
-          })} placeholder='Email' />
+          <InputWrap
+            {...register('email', {
+              required: true,
+              pattern: /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/,
+            })}
+            placeholder="Email"
+          />
           {errors?.email?.type === 'pattern' && (
             <ErrorInputMessage>{errors.email && '이메일 포멧이 맞지 않습니다.'}</ErrorInputMessage>
           )}
@@ -68,15 +74,14 @@ export const SignUp = () => {
 
         <Container>
           <InputTitle>Password</InputTitle>
-          <InputWrap {...register('password', { required: true, minLength: 8 })} placeholder='Password' />
+          <InputWrap {...register('password', { required: true, minLength: 8 })} placeholder="Password" />
           {errors?.password?.type === 'minLength' && (
             <ErrorInputMessage>{errors.password && '비밀번호는 8자리 이상으로 설정해주세요.'}</ErrorInputMessage>
           )}
         </Container>
 
-
         <SubmitButton $isActive={!isAbleButton}>
-          <Text color={colors.white} fontSize='M2' fontWeight='regular'>
+          <Text color={colors.white} fontSize="M2" fontWeight="regular">
             가입하기
           </Text>
         </SubmitButton>

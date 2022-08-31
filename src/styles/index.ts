@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 import reset from 'styled-reset'
-import { getFontFamilyCSS } from '../core/font'
+import { getFontFamilyCSS } from './font'
 
 export const GlobalStyles = createGlobalStyle`
   ${reset}
@@ -22,4 +22,3 @@ export const GlobalStyles = createGlobalStyle`
 
   ${getFontFamilyCSS()}
 `
-
