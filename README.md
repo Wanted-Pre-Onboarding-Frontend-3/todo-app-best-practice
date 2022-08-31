@@ -53,11 +53,11 @@
 ## 3. 역할
 | 이름   | 역할                                                                                                                                                                                                         |
 | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 김리후 | 절대경로 설정 https://github.com/Wanted-Pre-Onboarding-Frontend-3/todo-app-best-practice/pull/18, <br> 전체적인 코드 정리 https://github.com/Wanted-Pre-Onboarding-Frontend-3/todo-app-best-practice/pull/27 |
+| 김리후 | 팀원 / <br> 절대경로 설정 https://github.com/Wanted-Pre-Onboarding-Frontend-3/todo-app-best-practice/pull/18, <br> 전체적인 코드 정리 https://github.com/Wanted-Pre-Onboarding-Frontend-3/todo-app-best-practice/pull/27 |
 | 김지현 | 팀원 / styles 폴더 구조개선                                                                                                                                                                                  |
-| 서수민 | 역할 적어주세요                                                                                                                                                                                              |
-| 이경준 | 프로젝트 Deploy, 서버측 base url 환경변수로 변경                                                                                                                                                             |
-| 이혜성 | 팀장 / axios Autorization 헤더 리팩토링 https://github.com/Wanted-Pre-Onboarding-Frontend-3/todo-app-best-practice/pull/16                                                                                   |
+| 서수민 | 팀원 / best practice 논의                                                                                                                                                                                       |
+| 이경준 | 팀원 / 프로젝트 Deploy, 서버측 base url 환경변수로 변경                                                                                                                                                             |
+| 이혜성 | **팀장** / axios Autorization 헤더 리팩토링 https://github.com/Wanted-Pre-Onboarding-Frontend-3/todo-app-best-practice/pull/16                                                                                   |
 | 문선화 | 팀원 / redirect 리팩토링                                                                                                                                                                                     |
 | 홍성준 | 역할 적어주세요                                                                                                                                                                                              |
 
@@ -207,3 +207,16 @@ components 폴더의 경우 하위에 UI/Layout 폴더를 추가해 정리하자
 #### 11. 과제 요건 충족 
 - 과제 요건 중 '/'에 로그인/회원가입 기능을 구현하라는 조건이 있어, 1. 이를 명확히 지켜야 할지 2. 경로명에 충분히 기능이 드러나는 경우 그대로 둬도 좋을 지에 관한 논의 
 
+
+#### 12. JSX prop에 화살표 함수 대신 핸들러 사용
+- 기존 코드 : JSX prop에 화살표 함수가 사용됨
+- 논의 내용 : 화살표 함수를 사용하면 컴포넌트를 렌더링할 때마다 새로운 함수를 생성하므로 핸들러를 따로 분리하는게 좋을 것 같으며, 가독성면에서도 나을 것 같다는 의견
+  <br>
+  [참고] react/jsx-no-bind
+- 미적용 이유 : 핸들러 - 화살표 함수 사용이 퍼포먼스 상에 큰 차이가 없다는 결론
+
+#### 13. api 로직의 재사용성 논의
+
+- 기존 코드 : 여러 파일에서 반복되는 api 호출 로직
+- 논의 내용 : api를 호출하며 전반적으로  반복되는 try ~ catch 로직을 뽑아내어 재사용 가능하게 개선해보자는 의견
+- 미적용 이유 : 비지니스 로직별로 try ~ catch를 명시해 주는 것이 낫다고 판단
