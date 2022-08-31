@@ -4,8 +4,6 @@ import { ToStyledProps } from '../../utils/styled.util';
 import { fontSizeCSS, fontWeightCSS, getLineClampCSS } from "../../styles/typography";
 import { colors } from "../../styles/colors";
 
-
-
 type StyledProps = ToStyledProps<Omit<TextFieldProps, 'size'>>;
 
 export const DivWrap = styled.div`

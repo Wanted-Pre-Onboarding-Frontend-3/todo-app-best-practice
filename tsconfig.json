@@ -21,10 +21,11 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths" : {
-      "@/*": [  
+      "@/*": [
         "src/*"
       ]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", "src/svg.d.ts"]
+  "include": ["**/*.ts", "**/*.tsx", "src/svg.d.ts"],
+  "extends": "./tsconfig.paths.json"
 }
