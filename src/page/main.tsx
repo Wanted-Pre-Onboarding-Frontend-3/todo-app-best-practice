@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
-import { colors } from '@/styles/colors'
-import { Text } from '@/components/text'
+import { colors } from '../styles/colors'
+import { Text } from '../components/text'
 import styled from 'styled-components'
-import { LinkButton } from '@/components/LinkButton'
+import { LinkButton } from '../components/LinkButton'
 import { Link, useNavigate } from 'react-router-dom'
-import { getToken } from '@/utils/storage'
+import { getToken } from '../utils/storage'
 
 export const Main = () => {
   const navigate = useNavigate()

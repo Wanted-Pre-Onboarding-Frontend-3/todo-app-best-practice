@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import { colors } from '@/styles/colors'
+import { colors } from '../styles/colors'
 
 export interface LinkProps {
-  className?: string
-  children: React.ReactNode
-  onClick?: () => void
+  className?: string;
+  children: React.ReactNode;
+  onClick?: ()=> void;
 }
 
 export const LinkButton: React.FC<LinkProps> = (props) => {
@@ -28,4 +28,4 @@ const LinkWrap = styled.button`
   &&:hover {
     background: ${colors.primary700};
   }
-`
+`;

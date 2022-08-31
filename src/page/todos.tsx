@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { clearStorage, getToken } from '@/utils/storage'
+import { clearStorage, getToken } from '../utils/storage'
 import { useNavigate } from 'react-router-dom'
-import { Api } from '@/api/api'
+import { Api } from '../api/api'
 import axios, { AxiosError } from 'axios'
-import { TodoList } from '@/components/TodoList'
+import { TodoList } from '../components/TodoList'
 import styled from 'styled-components'
-import { Text } from '@/components/text'
-import { colors } from '@/styles/colors'
+import { Text } from '../components/text'
+import { colors } from '../styles/colors'
 import { useForm } from 'react-hook-form'
 
 export interface todos {
