@@ -34,17 +34,9 @@ export const TodoList: React.FC<TodoListProps> = (props) => {
       isCompleted,
     }
     try {
-      await Api.updateOneTodo.request(body, id, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      await Api.updateOneTodo.request(body, id)
 
-      const res = await Api.getManyTodo.request({
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      const res = await Api.getManyTodo.request()
       setTodo(res.data)
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -63,17 +55,9 @@ export const TodoList: React.FC<TodoListProps> = (props) => {
   const deleteOneTodos = (id: number) => {
     return async () => {
       try {
-        await Api.deleteOneTodo.request(id, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
+        await Api.deleteOneTodo.request(id)
 
-        const res = await Api.getManyTodo.request({
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
+        const res = await Api.getManyTodo.request()
         setTodo(res.data)
       } catch (error) {
         if (axios.isAxiosError(error)) {

@@ -31,17 +31,9 @@ export const Todos = () => {
 
   const createTodo = async () => {
     try {
-      await Api.createOneTodo.request(watch('todo'), {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      await Api.createOneTodo.request(watch('todo'))
 
-      const res = await Api.getManyTodo.request({
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      const res = await Api.getManyTodo.request()
 
       setTodoData(res.data)
       reset({
@@ -63,11 +55,7 @@ export const Todos = () => {
 
   const getManyTodos = async () => {
     try {
-      const res = await Api.getManyTodo.request({
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      const res = await Api.getManyTodo.request()
 
       return res
     } catch (error) {
