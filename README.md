@@ -8,9 +8,45 @@
 - 기간 : 2022/08/30 ~ 2022/09/01
 - 진행방식: 팀원의 사전과제 repo 중 하나를 선정해 best practice를 논의하고 리팩토링
 
+## 2. 실행 방법
 
+1. `Clone`
 
-## 2. 역할
+   ```markdown
+   $ git clone https://github.com/Wanted-Pre-Onboarding-Frontend-3/todo-app-best-practice.git
+   ```
+
+2. `Install`
+
+   ```markdown
+   // npm
+   $ npm install
+
+   // yarn
+   $ yarn install
+   ```
+
+3. `Set` .env
+
+   1. package.json과 같은 디렉토리에 `.env` 파일을 생성합니다.
+
+   2. `.env` 파일 안에 아래와 같이 작성합니다.
+
+   ```
+   REACT_APP_BASE_URL = 'https://n38lcff1wk.execute-api.ap-northeast-2.amazonaws.com'
+   ```
+
+4. `start` the project
+
+   ```markdown
+   // npm
+   $ npm start
+   
+   // yarn
+   $ yarn start
+   ```
+
+## 3. 역할
 |이름|역할|
 |---|---|
 |김리후| 역할 적어주세요 |
@@ -23,7 +59,7 @@
 
 @@@@@@ 역할 적어주세요 @@@@@@
 
-## 3. 디렉토리 구조 및 코드 구조
+## 4. 디렉토리 구조 및 코드 구조
 
 ### 디렉토리 구조
 
