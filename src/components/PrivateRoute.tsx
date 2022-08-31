@@ -1,5 +1,5 @@
 import { Outlet, Navigate, useLocation } from 'react-router-dom';
-import { getToken } from '../utils/storage';
+import { getToken } from '@/utils/storage';
 
 const PrivateRoute = () => {
     const token = getToken();

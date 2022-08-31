@@ -1,4 +1,5 @@
 import React from 'react';
+
 import styled from 'styled-components';
 
 interface ModalProps {
@@ -34,10 +35,9 @@ const DivWrap = styled.div`
 `;
 
 const ModalWrap = styled.div`
-
   position: absolute;
   width: 300px;
-  height: 500px;
+  height: 200px;
   padding: 40px;
   text-align: center;
   background-color: rgb(255, 255, 255);

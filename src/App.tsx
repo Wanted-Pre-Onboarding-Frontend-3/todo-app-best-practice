@@ -11,6 +11,7 @@ function App() {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const axiosError = error as AxiosError
+        
         if (axiosError.response?.status === 400) {
           // @ts-ignore
           alert(axiosError.response.data.message)

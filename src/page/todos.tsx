@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { clearStorage, getToken } from '@/utils/storage'
 import { useNavigate } from 'react-router-dom'
-import { Api } from '@/api/api'
 import axios, { AxiosError } from 'axios'
-import { TodoList } from '@/components/TodoList'
+
 import styled from 'styled-components'
+import { useForm } from 'react-hook-form'
+import { clearStorage, getToken } from '@/utils/storage'
+import { Api } from '@/api/api'
+import { TodoList } from '@/components/TodoList'
 import { Text } from '@/components/text'
 import { colors } from '@/styles/colors'
-import { useForm } from 'react-hook-form'
 
 export interface todos {
   id: number
@@ -56,7 +57,6 @@ export const Todos = () => {
   const getManyTodos = async () => {
     try {
       const res = await Api.getManyTodo.request()
-
       return res
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -81,7 +81,10 @@ export const Todos = () => {
   }, [])
 
   const onKeyDown: React.KeyboardEventHandler<HTMLInputElement> | KeyboardEvent = async (e) => {
-    if (isComposing) return
+    if (isComposing) {
+      return
+    }
+
     if (e.key === 'Enter') {
       e.preventDefault()
       await createTodo()
@@ -92,6 +95,7 @@ export const Todos = () => {
     clearStorage()
     navigate('/')
   }
+
   return (
     <FlexDivWrap>
       <LogOutButton onClick={handleLogout}>
@@ -99,16 +103,20 @@ export const Todos = () => {
           로그아웃
         </Text>
       </LogOutButton>
+
       <Text color={colors.primary700} fontSize="XL3" fontWeight="regular">
         To Do List
       </Text>
+
       <InputWrap
         {...register('todo')}
         onKeyDown={(e) => onKeyDown(e)}
         onCompositionStart={() => setIsComposing(true)}
         onCompositionEnd={() => setIsComposing(false)}
       />
+
       <CreateButton onClick={createTodo}>생성하기</CreateButton>
+      
       <TodoListDivWrap>
         {todoData.map((item) => {
           return (

@@ -17,14 +17,12 @@ export type TextProps = {
 interface Props extends TextProps {
   className?: string
   children?: React.ReactNode
-
   element?: TextElementType
 }
 
 // base component
 export const Text: React.FC<Props> = (props) => {
   const { className, children, element, ...rest } = props
-
   const styledProps = toStyledProps(rest)
 
   return (

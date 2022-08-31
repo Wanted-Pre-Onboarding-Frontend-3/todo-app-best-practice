@@ -12,9 +12,11 @@ export const fontWeightCSS: { [key in FontWeightKey]: FlattenSimpleInterpolation
   regular: css`
     font-weight: ${fontWeight.regular};
   `,
+
   medium: css`
     font-weight: ${fontWeight.medium};
   `,
+  
   bold: css`
     font-weight: ${fontWeight.bold};
   `,

@@ -12,10 +12,12 @@ export const textDecorationCSS: { [key in TextDecorationKey]: FlattenSimpleInter
   none: css`
     text-decoration: ${textDecoration.none};
   `,
+
   underline: css`
     text-decoration: ${textDecoration.underline};
     text-underline-offset: 1.5px;
   `,
+  
   lineThrough: css`
     text-decoration: ${textDecoration.lineThrough};
   `,
