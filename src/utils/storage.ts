@@ -1,39 +1,39 @@
 export const getStorageItem = (key: string, defaultValue: string) => {
   try {
-    const value = localStorage.getItem(key)
-    
+    const value = localStorage.getItem(key);
+
     if (!value) {
-      return defaultValue
+      return defaultValue;
     }
-    return value
+    return value;
   } catch {
-    return defaultValue
+    return defaultValue;
   }
-}
+};
 
 export const setStorageItem = (key: string, value: string) => {
   try {
-    localStorage.setItem(key, value)
+    localStorage.setItem(key, value);
   } catch (e) {
-    clearStorage()
-    console.warn(e)
+    clearStorage();
+    console.warn(e);
   }
-}
+};
 
 export const getToken = () => {
-  return getStorageItem('user', '')
-}
+  return getStorageItem('user', '');
+};
 
 export const setToken = (args: { email: string; token: string }) => {
   const { email, token } = args;
   //* 전역상태 추가시 email로 token 체크
   setStorageItem('user', token);
-}
+};
 
 export const clearStorage = () => {
   try {
-    localStorage.clear()
+    localStorage.clear();
   } catch (error) {
-    console.warn(error)
+    console.warn(error);
   }
-}
+};

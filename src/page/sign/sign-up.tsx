@@ -1,14 +1,12 @@
 import axios, { AxiosError } from 'axios';
 import { useState } from 'react';
-
 import { useNavigate } from 'react-router-dom';
 import { Container, DivWrap, FormWrap, InputTitle, SubmitButton } from './style';
-import { setToken } from "@/utils/storage";
-import { TextField } from "@/components/text-field";
-import { Text } from "@/components/text";
-import { colors } from "@/styles/colors";
-import { Api } from "@/api/api";
-
+import { Api } from '@/api/api';
+import { Text } from '@/components/text';
+import { TextField } from '@/components/text-field';
+import { colors } from '@/styles/colors';
+import { setToken } from '@/utils/storage';
 
 export interface AxiosResponseData {
   data: {
@@ -50,15 +48,16 @@ export const SignUp = () => {
 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [emailError, setEmailError] = useState<{ message: string, emailError?: boolean, confirm?: boolean }>({
+  const [emailError, setEmailError] = useState<{ message: string; emailError?: boolean; confirm?: boolean }>({
     message: '',
     confirm: true,
   });
-  const [passwordError, setPasswordError] = useState<{ message: string, passwordError?: boolean, confirm?: boolean }>({
+  const [passwordError, setPasswordError] = useState<{ message: string; passwordError?: boolean; confirm?: boolean }>({
     message: '',
     confirm: true,
   });
-  const isValidByEmailRegex = /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const isValidByEmailRegex =
+    /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   const isValidOrSetEmailError = () => {
     if (!email.length) {
@@ -120,7 +119,8 @@ export const SignUp = () => {
               isValidOrSetEmailError();
             }}
             error={emailError.emailError}
-            helpText={emailError.emailError && emailError.message}/>
+            helpText={emailError.emailError && emailError.message}
+          />
         </Container>
 
         <Container>
@@ -137,14 +137,8 @@ export const SignUp = () => {
           />
         </Container>
 
-
-        <SubmitButton
-          type="submit"
-          $isActive={passwordError.confirm && passwordError.confirm}
-        >
-          <Text color={colors.white}
-                fontSize="M2"
-                fontWeight="regular">
+        <SubmitButton type="submit" $isActive={passwordError.confirm && passwordError.confirm}>
+          <Text color={colors.white} fontSize="M2" fontWeight="regular">
             회원가입하기
           </Text>
         </SubmitButton>

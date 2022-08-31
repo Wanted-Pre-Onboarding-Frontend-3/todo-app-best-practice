@@ -1,5 +1,4 @@
 import React from 'react';
-
 import styled from 'styled-components';
 
 interface ModalProps {
@@ -13,9 +12,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
   return (
     <DivWrap onClick={closeModal}>
       <ModalWrap onClick={(e) => e.stopPropagation()}>
-        <ModalCloseButton onClick={closeModal}>
-          ✖
-        </ModalCloseButton>
+        <ModalCloseButton onClick={closeModal}>✖</ModalCloseButton>
         {children}
       </ModalWrap>
     </DivWrap>
@@ -45,7 +42,8 @@ const ModalWrap = styled.div`
   box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
 `;
 
-const ModalCloseButton = styled.button`  position: absolute;
+const ModalCloseButton = styled.button`
+  position: absolute;
   top: 15px;
   right: 15px;
   border: none;
@@ -54,4 +52,3 @@ const ModalCloseButton = styled.button`  position: absolute;
   font-size: 20px;
   cursor: pointer;
 `;
-

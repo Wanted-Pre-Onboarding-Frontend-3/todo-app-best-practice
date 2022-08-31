@@ -17,7 +17,7 @@ export const textDecorationCSS: { [key in TextDecorationKey]: FlattenSimpleInter
     text-decoration: ${textDecoration.underline};
     text-underline-offset: 1.5px;
   `,
-  
+
   lineThrough: css`
     text-decoration: ${textDecoration.lineThrough};
   `,

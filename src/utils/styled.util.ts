@@ -8,6 +8,7 @@ export type ToStyledProps<Props extends { [key in keyof Props]: Props[key] }> = 
 
 export const toStyledProps = <T extends { [key in keyof T]: T[key] }>(props: T): AddDollarSignToKey<T> => {
   return Object.keys(props).reduce((acc: AddDollarSignToKey<T>, cur) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     acc[`$${cur}`] = props[cur];
     return acc;

@@ -1,10 +1,9 @@
-import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
-import { Main } from '@/page/main'
-import { SignIn, SignUp } from '@/page/sign'
-import { Todos } from '@/page/todos'
-import PrivateRoute from '@/components/PrivateRoute'
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import PrivateRoute from '@/components/PrivateRoute';
+import { Main } from '@/page/main';
+import { SignIn, SignUp } from '@/page/sign';
+import { Todos } from '@/page/todos';
 
 export const Router = () => {
   return (
@@ -18,7 +17,7 @@ export const Router = () => {
         </Route>
       </Routes>
     </BrowserRouter>
-  )
-}
+  );
+};
 
-export default Router
+export default Router;
