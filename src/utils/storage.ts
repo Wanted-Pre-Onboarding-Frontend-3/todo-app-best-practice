@@ -1,6 +1,7 @@
 export const getStorageItem = (key: string, defaultValue: string) => {
   try {
     const value = localStorage.getItem(key)
+    
     if (!value) {
       return defaultValue
     }

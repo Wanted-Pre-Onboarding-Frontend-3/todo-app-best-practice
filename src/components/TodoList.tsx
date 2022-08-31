@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
-import { Api } from '@/api/api'
 import axios, { AxiosError } from 'axios'
+
+import styled from 'styled-components'
+import { useForm } from 'react-hook-form'
+
+import { Api } from '@/api/api'
 import { getToken } from '@/utils/storage'
 import { todos } from '@/page/todos'
-import styled from 'styled-components'
 import { colors } from '@/styles/colors'
 import { CheckIcon } from './icon/check'
-import { Text } from './text'
 import { TrashIcon } from './icon/trash'
+import { Text } from './text'
 import { Modal } from './Modal'
-import { useForm } from 'react-hook-form'
 
 interface TodoListProps {
   children: React.ReactNode
@@ -29,10 +31,12 @@ export const TodoList: React.FC<TodoListProps> = (props) => {
 
   const updateOneTodos = async (args: Pick<TodoListProps, 'isCompleted' | 'todo' | 'id'>) => {
     const { isCompleted, todo, id } = args
+
     const body = {
       todo,
       isCompleted,
     }
+
     try {
       await Api.updateOneTodo.request(body, id)
 
@@ -88,10 +92,12 @@ export const TodoList: React.FC<TodoListProps> = (props) => {
         <IconButton onClick={() => updateOneTodos({ isCompleted: !isCompleted, todo, id })}>
           <CheckIcon size={18} fillColor={isCompleted ? `${colors.primary500}` : `${colors.grey500}`} />
         </IconButton>
+        
         <Text color={colors.primary700} fontSize="M3">
           {todo}
         </Text>
       </FlexDivWrap>
+
       {modalOpen && (
         <Modal closeModal={() => setModalOpen((prev) => !prev)}>
           <InputWrap
@@ -101,16 +107,19 @@ export const TodoList: React.FC<TodoListProps> = (props) => {
             onCompositionStart={() => setIsComposing(true)}
             onCompositionEnd={() => setIsComposing(false)}
           />
+
           <ModalModifyButton onClick={() => updateOneTodos({ isCompleted, todo: watch(`todo${id}`), id })}>
             수정하기
           </ModalModifyButton>
         </Modal>
       )}
+
       <ModifyButton onClick={() => setModalOpen((prev) => !prev)}>
         <Text color={colors.white} fontSize="S4">
           수정
         </Text>
       </ModifyButton>
+
       <IconButton onClick={deleteOneTodos(id)}>
         <TrashIcon size={15} />
       </IconButton>
@@ -157,7 +166,7 @@ const ModalModifyButton = styled.button`
   cursor: pointer;
   color: ${colors.white};
   width: 100%;
-
+  
   margin-top: 8px;
 `
 

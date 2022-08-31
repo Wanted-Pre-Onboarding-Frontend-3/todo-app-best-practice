@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
+import styled from 'styled-components'
 import { colors } from '@/styles/colors'
 import { Text } from '@/components/text'
-import styled from 'styled-components'
 import { LinkButton } from '@/components/LinkButton'
-import { Link } from 'react-router-dom'
 
 export const Main = () => {
   return (
@@ -12,9 +13,11 @@ export const Main = () => {
         <Text color={colors.grey800} fontSize="XL3" fontWeight="regular">
           Hello
         </Text>
+
         <Text color={colors.primary700} fontSize="XL1" fontWeight="bold">
           To Do List
         </Text>
+
         <Text color={colors.grey800} fontSize="XL1" fontWeight="regular">
           App
         </Text>

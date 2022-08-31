@@ -5,6 +5,7 @@ export interface loginAuth {
   data: {
     access_token: string;
   };
+  
   message: string;
 }
 
