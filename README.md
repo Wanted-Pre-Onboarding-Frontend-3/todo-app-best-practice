@@ -151,6 +151,7 @@ components 폴더의 경우 하위에 UI/Layout 폴더를 추가해 정리하자
 
 #### 2. axios Athorization 헤더 추가 로직 리팩토링
 
+- 기존 코드 : TodoList, todos 컴포넌트에서 api를 호출할 때마다 Athorization 헤더를 설정하는 코드가 중복되었음.
 - axios interceptors를 이용해 Athorization 헤더 추가 https://github.com/Wanted-Pre-Onboarding-Frontend-3/todo-app-best-practice/pull/16
 
 
