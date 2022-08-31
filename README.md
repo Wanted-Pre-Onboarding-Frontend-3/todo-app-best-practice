@@ -50,7 +50,7 @@
 |이름|역할|
 |---|---|
 |김리후| 역할 적어주세요 |
-|김지현| 역할 적어주세요 |
+|김지현| 팀원 / styles 폴더 구조개선 |
 |서수민| 역할 적어주세요 |
 |이경준| 역할 적어주세요 |
 |이혜성| 팀장 / axios Autorization 헤더 리팩토링 https://github.com/Wanted-Pre-Onboarding-Frontend-3/todo-app-best-practice/pull/16 |
@@ -138,7 +138,7 @@ components 폴더의 경우 하위에 UI/Layout 폴더를 추가해 정리하자
 
 #### 1. 폴더 구조 개선
 
-- styles 폴더 내부로 스타일과 관련한 파일을 모아, 역할에 맞는 폴더구조를 만들고자 했습니다.
+- 스타일과 관련한 파일들을 styles 폴더에 모아, 역할에 맞는 폴더구조를 만들고자 했습니다.
 
 #### 2. axios Athorization 헤더 추가 로직 리팩토링
 
