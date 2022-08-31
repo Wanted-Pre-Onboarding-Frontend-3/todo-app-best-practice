@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { colors } from '../core/colors'
+import { colors } from '../styles/colors'
 
 export interface LinkProps {
   className?: string;
