@@ -8,6 +8,8 @@
 - 기간 : 2022/08/30 ~ 2022/09/01
 - 진행방식: 팀원의 사전과제 repo 중 하나를 선정해 best practice를 논의하고 리팩토링
 
+<br>
+
 ## 2. 실행 방법
 
 1. `Clone`
@@ -46,10 +48,12 @@
    $ yarn start
    ```
 
+<br><br>
+
 ## 3. 역할
 |이름|역할|
 |---|---|
-|김리후| 역할 적어주세요 |
+|김리후| 절대경로 설정 https://github.com/Wanted-Pre-Onboarding-Frontend-3/todo-app-best-practice/pull/18, <br> 전체적인 코드 정리 https://github.com/Wanted-Pre-Onboarding-Frontend-3/todo-app-best-practice/pull/27 |
 |김지현| 역할 적어주세요 |
 |서수민| 역할 적어주세요 |
 |이경준| 역할 적어주세요 |
@@ -57,9 +61,10 @@
 |문선화| 팀원 / redirect 리팩토링 |
 |홍성준| 역할 적어주세요 |
 
-@@@@@@ 역할 적어주세요 @@@@@@
 
+<br><br>
 ## 4. 디렉토리 구조 및 코드 구조
+
 
 ### 디렉토리 구조
 
@@ -117,8 +122,12 @@
  ┗ 📜index.js
  ```
 
-@@@@@@ 디렉토리 구조 설명 추가 @@@@@@
+<br>
+
 디렉토리 구조는 아래의 역할에 따라 구성했습니다.
+
+<br>
+
 |구분|설명|
 |---|---|
 |/api| api 호출 함수를 모아둔 폴더 |
@@ -128,11 +137,19 @@
 |/utils| 전역 상태, 전역 함수를 관리 |
 |/styles| 전역 스타일을 관리  |
 
+<br>
+
 components 폴더의 경우 하위에 UI/Layout 폴더를 추가해 정리하자는 의견이 있었습니다. 논의해본 결과 팀원 모두 폴더 추가를 통해 명확한 역할 분리를 하는 것에는 동의하나, 이번 과제 규모에서는 불필요한 부분이라고 생각되어 현재와 같은 구조로 확정하였습니다.
+
+
+<br><br>
 
 ### 코드 구조
 
 @@@@@@ 코드 구조는 무엇을 적을지 논의 필요 @@@@@@
+
+
+<br><br>
 
 ## 5. Best Practice 논의 내용
 
@@ -140,25 +157,43 @@ components 폴더의 경우 하위에 UI/Layout 폴더를 추가해 정리하자
 
 - styles 폴더 내부로 스타일과 관련한 파일을 모아, 역할에 맞는 폴더구조를 만들고자 했습니다.
 
+<br>
+
 #### 2. axios Athorization 헤더 추가 로직 리팩토링
 
 - axios interceptors를 이용해 Athorization 헤더 추가 https://github.com/Wanted-Pre-Onboarding-Frontend-3/todo-app-best-practice/pull/16
 
+
+<br>
+
 #### 3. 절대경로 import
 
-- @@@@@@ 설명추가 @@@@@@ (리후님)
+- 기존 코드 : 절대 경로 미설정으로 경로 확인이 상대적으로 복잡하다는 의견
+- `tsconfig.json`에 baseUrl: src를 추가하여 **src 경로를 기준**으로 절대 경로를 참조하도록 적용, 가독성 높임
+
+
+
+<br>
 
 #### 4. API Base URL 환경변수화
 
 - @@@@@@ 설명추가 @@@@@@ (경준님)
 
+
+<br>
+
 #### 5. PrivateProvider
 
 - todos와 로그인/회원가입 컴포넌트에서 토큰 체크 후 리다이렉트 하는 방식에서 PrivateRoute 컴포넌트 통해 리다이렉트 하는 방식으로 변경하였습니다. 전역상태에 영향을 받는 리다이렉트 처리는 여러 컴포넌트에 하나의 컴포넌트로 처리할 수 있다면 관리 측면에서 효율적일 것이라고 판단하였습니다.
 
+
+<br>
+
 #### 6. react-hook-form 라이브러리 대체
 
 - @@@@@@ 설명추가 @@@@@@ (성준님)
+
+<br>
 
 #### 7. prettier 설정
 
