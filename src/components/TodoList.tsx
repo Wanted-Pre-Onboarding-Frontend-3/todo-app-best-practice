@@ -1,90 +1,90 @@
-import React, { useState } from 'react'
-import axios, { AxiosError } from 'axios'
-
-import styled from 'styled-components'
-import { useForm } from 'react-hook-form'
-
-import { Api } from '@/api/api'
-import { getToken } from '@/utils/storage'
-import { todos } from '@/page/todos'
-import { colors } from '@/styles/colors'
-import { CheckIcon } from './icon/check'
-import { TrashIcon } from './icon/trash'
-import { Text } from './text'
-import { Modal } from './Modal'
+import axios, { AxiosError } from 'axios';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import styled from 'styled-components';
+import { CheckIcon } from './icon/check';
+import { TrashIcon } from './icon/trash';
+import { Modal } from './Modal';
+import { Text } from './text';
+import { Api } from '@/api/api';
+import { todos } from '@/page/todos';
+import { colors } from '@/styles/colors';
+import { getToken } from '@/utils/storage';
 
 interface TodoListProps {
-  children: React.ReactNode
-  id: number
-  todo: string
-  isCompleted: boolean
-  userId: number
-  setTodo: (StatusType: todos[]) => void
+  children: React.ReactNode;
+  id: number;
+  todo: string;
+  isCompleted: boolean;
+  userId: number;
+  setTodo: (StatusType: todos[]) => void;
 }
 
 export const TodoList: React.FC<TodoListProps> = (props) => {
-  const { isCompleted, todo, id, setTodo } = props
-  const { register, watch, reset } = useForm()
-  const [isComposing, setIsComposing] = useState<boolean>(false)
-  const [modalOpen, setModalOpen] = useState<boolean>(false)
-  const token = getToken()
+  const { isCompleted, todo, id, setTodo } = props;
+  const { register, watch, reset } = useForm();
+  const [isComposing, setIsComposing] = useState<boolean>(false);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const token = getToken();
 
   const updateOneTodos = async (args: Pick<TodoListProps, 'isCompleted' | 'todo' | 'id'>) => {
-    const { isCompleted, todo, id } = args
+    const { isCompleted, todo, id } = args;
 
     const body = {
       todo,
       isCompleted,
-    }
+    };
 
     try {
-      await Api.updateOneTodo.request(body, id)
+      await Api.updateOneTodo.request(body, id);
 
-      const res = await Api.getManyTodo.request()
-      setTodo(res.data)
+      const res = await Api.getManyTodo.request();
+      setTodo(res.data);
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        const axiosError = error as AxiosError
-        const { response } = axiosError
+        const axiosError = error as AxiosError;
+        const { response } = axiosError;
 
         if (response?.status === 404) {
-          const { data } = response
+          const { data } = response;
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
-          alert(data?.message)
+          alert(data?.message);
         }
       }
     }
-  }
+  };
 
   const deleteOneTodos = (id: number) => {
     return async () => {
       try {
-        await Api.deleteOneTodo.request(id)
+        await Api.deleteOneTodo.request(id);
 
-        const res = await Api.getManyTodo.request()
-        setTodo(res.data)
+        const res = await Api.getManyTodo.request();
+        setTodo(res.data);
       } catch (error) {
         if (axios.isAxiosError(error)) {
-          const axiosError = error as AxiosError
-          const { response } = axiosError
+          const axiosError = error as AxiosError;
+          const { response } = axiosError;
 
           if (response?.status === 404) {
-            const { data } = response
+            const { data } = response;
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
-            alert(data?.message)
+            alert(data?.message);
           }
         }
       }
-    }
-  }
+    };
+  };
 
   const onKeyDown: React.KeyboardEventHandler<HTMLInputElement> | KeyboardEvent = async (e) => {
-    if (isComposing) return
+    if (isComposing) return;
     if (e.key === 'Enter') {
-      e.preventDefault()
-      await updateOneTodos({ isCompleted, todo: watch(`todo${id}`), id })
+      e.preventDefault();
+      await updateOneTodos({ isCompleted, todo: watch(`todo${id}`), id });
     }
-  }
+  };
 
   return (
     <DivWrap>
@@ -92,7 +92,7 @@ export const TodoList: React.FC<TodoListProps> = (props) => {
         <IconButton onClick={() => updateOneTodos({ isCompleted: !isCompleted, todo, id })}>
           <CheckIcon size={18} fillColor={isCompleted ? `${colors.primary500}` : `${colors.grey500}`} />
         </IconButton>
-        
+
         <Text color={colors.primary700} fontSize="M3">
           {todo}
         </Text>
@@ -124,8 +124,8 @@ export const TodoList: React.FC<TodoListProps> = (props) => {
         <TrashIcon size={15} />
       </IconButton>
     </DivWrap>
-  )
-}
+  );
+};
 
 const DivWrap = styled.div`
   display: flex;
@@ -138,27 +138,27 @@ const DivWrap = styled.div`
     display: flex;
     border-bottom: 1px solid ${colors.grey500};
   }
-`
+`;
 
 const InputWrap = styled.input`
   width: 100%;
   border: 1px solid ${colors.grey700};
   height: 40px;
   border-radius: 3px;
-`
+`;
 
 const FlexDivWrap = styled.div`
   display: flex;
   flex: 1;
   align-items: center;
   margin: 0 8px;
-`
+`;
 
 const ModifyButton = styled.button`
   background: ${colors.grey600};
   cursor: pointer;
   margin: 0 8px;
-`
+`;
 
 const ModalModifyButton = styled.button`
   height: 40px;
@@ -166,12 +166,12 @@ const ModalModifyButton = styled.button`
   cursor: pointer;
   color: ${colors.white};
   width: 100%;
-  
+
   margin-top: 8px;
-`
+`;
 
 const IconButton = styled.button`
   background: unset;
   cursor: pointer;
   margin: 0 8px;
-`
+`;

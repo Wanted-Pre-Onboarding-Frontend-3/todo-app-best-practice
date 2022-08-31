@@ -1,100 +1,101 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import axios, { AxiosError } from 'axios'
-
-import styled from 'styled-components'
-import { useForm } from 'react-hook-form'
-import { clearStorage, getToken } from '@/utils/storage'
-import { Api } from '@/api/api'
-import { TodoList } from '@/components/TodoList'
-import { Text } from '@/components/text'
-import { colors } from '@/styles/colors'
+import axios, { AxiosError } from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { Api } from '@/api/api';
+import { Text } from '@/components/text';
+import { TodoList } from '@/components/TodoList';
+import { colors } from '@/styles/colors';
+import { clearStorage, getToken } from '@/utils/storage';
 
 export interface todos {
-  id: number
-  todo: string
-  isCompleted: boolean
-  userId: number
+  id: number;
+  todo: string;
+  isCompleted: boolean;
+  userId: number;
 }
 
 export const Todos = () => {
-  const [todoData, setTodoData] = useState<todos[]>([])
-  const [isComposing, setIsComposing] = useState<boolean>(false)
-  const { register, watch, reset } = useForm<Pick<todos, 'todo'>>()
-  const navigate = useNavigate()
-  const token = getToken()
+  const [todoData, setTodoData] = useState<todos[]>([]);
+  const [isComposing, setIsComposing] = useState<boolean>(false);
+  const { register, watch, reset } = useForm<Pick<todos, 'todo'>>();
+  const navigate = useNavigate();
+  const token = getToken();
 
   useEffect(() => {
     if (!token) {
-      navigate('/')
+      navigate('/');
     }
-  }, [token])
+  }, [token]);
 
   const createTodo = async () => {
     try {
-      await Api.createOneTodo.request(watch('todo'))
+      await Api.createOneTodo.request(watch('todo'));
 
-      const res = await Api.getManyTodo.request()
+      const res = await Api.getManyTodo.request();
 
-      setTodoData(res.data)
+      setTodoData(res.data);
       reset({
         todo: '',
-      })
+      });
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        const axiosError = error as AxiosError
-        const { response } = axiosError
+        const axiosError = error as AxiosError;
+        const { response } = axiosError;
 
         if (response?.status === 404) {
-          const { data } = response
+          const { data } = response;
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
-          alert(data?.message)
+          alert(data?.message);
         }
       }
     }
-  }
+  };
 
   const getManyTodos = async () => {
     try {
-      const res = await Api.getManyTodo.request()
-      return res
+      const res = await Api.getManyTodo.request();
+      return res;
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        const axiosError = error as AxiosError
-        const { response } = axiosError
+        const axiosError = error as AxiosError;
+        const { response } = axiosError;
 
         if (response?.status === 404) {
-          const { data } = response
+          const { data } = response;
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
-          alert(data?.message)
+          alert(data?.message);
         }
       }
     }
-  }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await getManyTodos()
-      setTodoData(data)
-    }
-    fetchData()
-  }, [])
+      const { data } = await getManyTodos();
+      setTodoData(data);
+    };
+    fetchData();
+  }, []);
 
   const onKeyDown: React.KeyboardEventHandler<HTMLInputElement> | KeyboardEvent = async (e) => {
     if (isComposing) {
-      return
+      return;
     }
 
     if (e.key === 'Enter') {
-      e.preventDefault()
-      await createTodo()
+      e.preventDefault();
+      await createTodo();
     }
-  }
+  };
 
   const handleLogout = () => {
-    clearStorage()
-    navigate('/')
-  }
+    clearStorage();
+    navigate('/');
+  };
 
   return (
     <FlexDivWrap>
@@ -116,19 +117,19 @@ export const Todos = () => {
       />
 
       <CreateButton onClick={createTodo}>생성하기</CreateButton>
-      
+
       <TodoListDivWrap>
         {todoData.map((item) => {
           return (
             <TodoList key={item.id} setTodo={setTodoData} {...item}>
               {item.todo}
             </TodoList>
-          )
+          );
         })}
       </TodoListDivWrap>
     </FlexDivWrap>
-  )
-}
+  );
+};
 
 const FlexDivWrap = styled.div`
   display: flex;
@@ -137,7 +138,7 @@ const FlexDivWrap = styled.div`
   align-items: center;
   padding: 0 20px;
   position: relative;
-`
+`;
 
 const TodoListDivWrap = styled.div`
   display: flex;
@@ -151,7 +152,7 @@ const TodoListDivWrap = styled.div`
   margin: 30px 0;
   padding: 8px 0;
   border: 1px solid ${colors.grey500};
-`
+`;
 
 const CreateButton = styled.button`
   height: 40px;
@@ -161,14 +162,14 @@ const CreateButton = styled.button`
   width: 100%;
 
   margin-top: 8px;
-`
+`;
 
 const InputWrap = styled.input`
   width: 100%;
   border: 1px solid ${colors.grey700};
   height: 40px;
   border-radius: 3px;
-`
+`;
 
 const LogOutButton = styled.button`
   background: unset;
@@ -176,4 +177,4 @@ const LogOutButton = styled.button`
   cursor: pointer;
   position: absolute;
   right: 20px;
-`
+`;

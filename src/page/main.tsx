@@ -1,10 +1,9 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-
-import styled from 'styled-components'
-import { colors } from '@/styles/colors'
-import { Text } from '@/components/text'
-import { LinkButton } from '@/components/LinkButton'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { LinkButton } from '@/components/LinkButton';
+import { Text } from '@/components/text';
+import { colors } from '@/styles/colors';
 
 export const Main = () => {
   return (
@@ -39,21 +38,21 @@ export const Main = () => {
         </Text>
       </Link>
     </FlexColumnDivWrap>
-  )
-}
+  );
+};
 
 const FlexColumnDivWrap = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
   align-items: center;
-`
+`;
 
 const LinkContainer = styled.div`
   width: 100%;
   padding: 0 20px;
   margin-top: 40px;
   margin-bottom: 8px;
-`
+`;
 
-const LinkButtonWrap = styled(LinkButton)``
+const LinkButtonWrap = styled(LinkButton)``;

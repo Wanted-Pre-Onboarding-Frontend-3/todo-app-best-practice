@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { colors } from "../../styles/colors";
-import { fontSize, fontWeight } from "../../styles/typography";
-
+import { colors } from '@/styles/colors';
+import { fontSize, fontWeight } from '@/styles/typography';
 
 export const DivWrap = styled.div`
   display: flex;

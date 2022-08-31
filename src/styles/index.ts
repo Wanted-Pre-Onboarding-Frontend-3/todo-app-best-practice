@@ -1,10 +1,9 @@
-import { createGlobalStyle } from 'styled-components'
-import reset from 'styled-reset'
-import { getFontFamilyCSS } from './font'
+import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
+import { getFontFamilyCSS } from './font';
 
 export const GlobalStyles = createGlobalStyle`
   ${reset}
-  
   * {
     box-sizing: border-box;
     outline: none;
@@ -21,4 +20,4 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   ${getFontFamilyCSS()}
-`
+`;

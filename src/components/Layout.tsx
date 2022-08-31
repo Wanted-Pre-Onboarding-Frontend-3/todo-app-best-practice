@@ -1,18 +1,17 @@
-import React from 'react'
-
-import styled from 'styled-components'
-import { colors } from '@/styles/colors'
+import React from 'react';
+import styled from 'styled-components';
+import { colors } from '@/styles/colors';
 
 export interface LayoutProps {
-  className?: string
-  children: React.ReactNode
+  className?: string;
+  children: React.ReactNode;
 }
 
 export const Layout: React.FC<LayoutProps> = (props) => {
-  const { children } = props
+  const { children } = props;
 
-  return <LayoutDiv>{children}</LayoutDiv>
-}
+  return <LayoutDiv>{children}</LayoutDiv>;
+};
 
 const LayoutDiv = styled.div`
   width: 500px;
@@ -23,4 +22,4 @@ const LayoutDiv = styled.div`
   justify-content: center;
   height: 100vh;
   background-color: ${colors.grey200};
-`
+`;

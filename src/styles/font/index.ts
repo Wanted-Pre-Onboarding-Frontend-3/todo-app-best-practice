@@ -1,7 +1,7 @@
-import { css } from 'styled-components'
-import { fontWeight } from "@/styles/typography";
+import { css } from 'styled-components';
+import { fontWeight } from '@/styles/typography';
 
-export const FONT_FAMILY_NAME = 'Spoqa Han Sans Neo'
+export const FONT_FAMILY_NAME = 'Spoqa Han Sans Neo';
 
 export const getFontFamilyCSS = () => {
   return css`
@@ -46,5 +46,5 @@ export const getFontFamilyCSS = () => {
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
     }
-  `
-}
+  `;
+};
